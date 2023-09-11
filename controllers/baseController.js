@@ -3,5 +3,5 @@ exports.getOverview = (req, res, next) => {
 };
 
 exports.getMe = (req, res, next) => {
-  res.send(`Ignacio Villar`);
+  res.send(`Aileen Lockling`);
 };
