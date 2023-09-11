@@ -4,6 +4,6 @@ const meController = require("../controllers/baseController");
 
 router.get("/", meController.getOverview);
 
-router.get("/me", meController.getMe);
+router.get("/someone", meController.getSomeone);
 
 module.exports = router;
