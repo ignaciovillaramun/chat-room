@@ -1,4 +1,6 @@
 var User = require("../models/contactModels");
+const AppError = require("../utils/appError");
+const catchAsync = require("../utils/catchAsync");
 
 exports.getAll = async (req, res, next) => {
   const data = await User.find();
@@ -6,13 +8,17 @@ exports.getAll = async (req, res, next) => {
   res.status(200).json(data);
 };
 
-exports.getOne = async (req, res, next) => {
-  const data = await User.findById(req.params.id);
+exports.getOne = catchAsync(async (req, res, next) => {
+  const doc = await User.findById(req.params.id);
 
-  res.status(200).json(data);
-};
+  if (!doc) {
+    return next(new AppError("No doc found with that ID", 404));
+  }
 
-exports.createContact = async (req, res) => {
+  res.status(200).json(doc);
+});
+
+exports.createContact = catchAsync(async (req, res, next) => {
   const doc = await User.create(req.body);
 
   res.status(201).json({
@@ -21,13 +27,17 @@ exports.createContact = async (req, res) => {
       data: doc,
     },
   });
-};
+});
 
-exports.updateContact = async (req, res) => {
+exports.updateContact = catchAsync(async (req, res, next) => {
   const doc = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
+
+  if (!doc) {
+    return next(new AppError("No document found with that ID", 404));
+  }
 
   res.status(204).json({
     status: "success",
@@ -35,13 +45,17 @@ exports.updateContact = async (req, res) => {
       data: doc,
     },
   });
-};
+});
 
-exports.deleteContact = async (req, res) => {
+exports.deleteContact = catchAsync(async (req, res, next) => {
   const doc = await User.findByIdAndDelete(req.params.id);
+
+  if (!doc) {
+    return next(new AppError("No document found with that ID", 404));
+  }
 
   res.status(200).json({
     status: "success",
     data: null,
   });
-};
+});
