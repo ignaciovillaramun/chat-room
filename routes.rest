@@ -42,7 +42,7 @@ content-type: application/json
   "birthday": "07-28-1995"
  }
 ### PUT contact 
-PUT https://cse341-villar.onrender.com/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+PUT https://cse341-villar.onrender.com/contacts/65026abcca4b1c47c1163329 HTTP/1.1
 content-type: application/json
 
 {
@@ -50,4 +50,4 @@ content-type: application/json
 } 
 
 ### DELETE contact 
-DELETE https://cse341-villar.onrender.com/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+DELETE https://cse341-villar.onrender.com/contacts/65026abcca4b1c47c1163329 HTTP/1.1
