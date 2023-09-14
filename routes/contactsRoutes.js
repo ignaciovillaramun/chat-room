@@ -10,7 +10,7 @@ router
 router
   .route("/:id")
   .get(contactController.getOne)
-  .patch(contactController.updateContact)
+  .put(contactController.updateContact)
   .delete(contactController.deleteContact);
 
 module.exports = router;

@@ -1,0 +1,53 @@
+// LOCALHOST 
+### 
+GET http://localhost:8080/contacts 
+### 
+GET http://localhost:8080/contacts/6500bea0b0eff6ceace67b43 
+### Create contact 
+POST http://localhost:8080/contacts HTTP/1.1 
+content-type: application/json
+
+ {
+  "firstName": "Ignacio",
+  "lastName": "Villar",
+  "email": "Ignacio.villar@gmail.com",
+  "favoriteColor": "Green",
+  "birthday": "07-28-1995"
+ }
+### PUT contact 
+PUT http://localhost:8080/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Valerie", "lastName":"Lockling", "email":"valeri.lockling@gmail.com", "favoriteColor":"Blue", "birthday":"11-10-1997"
+} 
+
+### DELETE contact 
+DELETE http://localhost:8080/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+
+// PRODUCTION Deploy 
+### 
+GET https://cse341-villar.onrender.com/contacts 
+### 
+GET https://cse341-villar.onrender.com/contacts/6500bea0b0eff6ceace67b43 
+###
+POST https://cse341-villar.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+ {
+  "firstName": "Ignacio",
+  "lastName": "Villar",
+  "email": "Ignacio.villar@gmail.com",
+  "favoriteColor": "Green",
+  "birthday": "07-28-1995"
+ }
+### PUT contact 
+PUT https://cse341-villar.onrender.com/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+content-type: application/json
+
+{
+"firstName":"Valerie", "lastName":"Lockling", "email":"valeri.lockling@gmail.com", "favoriteColor":"Blue", "birthday":"11-10-1997"
+} 
+
+### DELETE contact 
+DELETE https://cse341-villar.onrender.com/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
