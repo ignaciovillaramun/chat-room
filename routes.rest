@@ -1,21 +1,21 @@
 // LOCALHOST 
 ### 
-GET http://localhost:8080/contacts 
+GET http://localhost:8080/users 
 ### 
-GET http://localhost:8080/contacts/6500bf19b0eff6ceace67b44 
+GET http://localhost:8080/users/650b355f87bac41e026c7e54 
 ### Create contact 
-POST http://localhost:8080/contacts HTTP/1.1 
+POST http://localhost:8080/users HTTP/1.1 
 content-type: application/json
 
  {
-  "firstName": "Ignacio",
+  "firstName": "juan",
   "lastName": "Villar",
   "email": "Ignacio.villar@gmail.com",
   "favoriteColor": "Green",
   "birthday": "07-28-1995"
  }
 ### PUT contact 
-PUT http://localhost:8080/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+PUT http://localhost:8080/users/650268b66bc0e6a9275042e0 HTTP/1.1
 content-type: application/json
 
 {
@@ -23,15 +23,15 @@ content-type: application/json
 } 
 
 ### DELETE contact 
-DELETE http://localhost:8080/contacts/650268b66bc0e6a9275042e0 HTTP/1.1
+DELETE http://localhost:8080/users/650268b66bc0e6a9275042e0 HTTP/1.1
 
 // PRODUCTION Deploy 
 ### 
-GET https://cse341-villar.onrender.com/contacts 
+GET https://cse341-villar.onrender.com/users 
 ### 
-GET https://cse341-villar.onrender.com/contacts/6500bea0b0eff6ceace67b43 
+GET https://cse341-villar.onrender.com/users/6500bea0b0eff6ceace67b43 
 ###
-POST https://cse341-villar.onrender.com/contacts HTTP/1.1
+POST https://cse341-villar.onrender.com/users HTTP/1.1
 content-type: application/json
 
  {
@@ -42,7 +42,7 @@ content-type: application/json
   "birthday": "07-28-1995"
  }
 ### PUT contact 
-PUT https://cse341-villar.onrender.com/contacts/65026abcca4b1c47c1163329 HTTP/1.1
+PUT https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
 content-type: application/json
 
 {
@@ -50,4 +50,4 @@ content-type: application/json
 } 
 
 ### DELETE contact 
-DELETE https://cse341-villar.onrender.com/contacts/65026abcca4b1c47c1163329 HTTP/1.1
+DELETE https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
