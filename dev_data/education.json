@@ -1,0 +1,30 @@
+[
+  {
+    "degree": "Bachelor of Science in Computer Science",
+    "school": "University of Techville",
+    "location": "Techville, CA",
+    "graduation_date": "May 2016",
+    "user": "650bbea82324339f4af3c227"
+  },
+  {
+    "degree": "Bachelor of Arts in Communication",
+    "school": "University of Communication",
+    "location": "Chicago, IL",
+    "graduation_date": "May 2018",
+    "user": "650bb03a2324339f4af3c224"
+  },
+  {
+    "degree": "Master of Science in Computer Science",
+    "school": "Tech University",
+    "location": "Seattle, WA",
+    "graduation_date": "December 2019",
+    "user": "650bb03a2324339f4af3c225"
+  },
+  {
+    "degree": "Bachelor of Science in Business",
+    "school": "Business College",
+    "location": "Houston, TX",
+    "graduation_date": "May 2016",
+    "user": "650bb03a2324339f4af3c226"
+  }
+]

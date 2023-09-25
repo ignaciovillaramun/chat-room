@@ -2,24 +2,45 @@ var User = require('../models/usersModels');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
+const fieldOrder = [
+  'id',
+  'name',
+  'email',
+  'phone',
+  'address',
+  'experience',
+  'education',
+];
+
+const formatDocument = (doc, fieldOrder) => {
+  const formattedDoc = {};
+
+  fieldOrder.forEach((field) => {
+    formattedDoc[field] = doc[field];
+  });
+
+  return formattedDoc;
+};
+
 exports.getAll = async (req, res, next) => {
   const data = await User.find();
-  console.log('hello', data);
+  const formattedData = data.map((doc) => formatDocument(doc, fieldOrder));
 
-  res.status(200).json(data);
+  res.status(200).json(formattedData);
 };
 
 exports.getOne = catchAsync(async (req, res, next) => {
   const doc = await User.findById(req.params.id);
+  const formattedDoc = formatDocument(doc, fieldOrder);
 
   if (!doc) {
     return next(new AppError('No doc found with that ID', 404));
   }
 
-  res.status(200).json(doc);
+  res.status(200).json(formattedDoc);
 });
 
-exports.createContact = catchAsync(async (req, res, next) => {
+exports.createUser = catchAsync(async (req, res, next) => {
   const doc = await User.create(req.body);
 
   res.status(201).json({
@@ -30,11 +51,13 @@ exports.createContact = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateContact = catchAsync(async (req, res, next) => {
+exports.updateUser = catchAsync(async (req, res, next) => {
+  console.log(req.body);
   const doc = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
+  console.log(doc);
 
   if (!doc) {
     return next(new AppError('No document found with that ID', 404));
@@ -48,7 +71,7 @@ exports.updateContact = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteContact = catchAsync(async (req, res, next) => {
+exports.deleteUser = catchAsync(async (req, res, next) => {
   const doc = await User.findByIdAndDelete(req.params.id);
 
   if (!doc) {

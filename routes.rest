@@ -2,28 +2,65 @@
 ### 
 GET http://localhost:8080/users 
 ### 
-GET http://localhost:8080/users/650b355f87bac41e026c7e54 
-### Create contact 
+GET http://localhost:8080/users/6511bc142324339f4af3c245
+### Create user 
 POST http://localhost:8080/users HTTP/1.1 
 content-type: application/json
 
  {
-  "firstName": "juan",
-  "lastName": "Villar",
-  "email": "Ignacio.villar@gmail.com",
-  "favoriteColor": "Green",
-  "birthday": "07-28-1995"
+    "name": "John Doe",
+    "email": "johndoe@email.com",
+    "phone": "123-456-7890",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    }
  }
-### PUT contact 
-PUT http://localhost:8080/users/650268b66bc0e6a9275042e0 HTTP/1.1
+### PUT user 
+PUT http://localhost:8080/users/650bb03a2324339f4af3c224 HTTP/1.1
 content-type: application/json
 
 {
-"firstName":"Valerie", "lastName":"Lockling", "email":"valeri.lockling@gmail.com", "favoriteColor":"Blue", "birthday":"11-10-1997"
-} 
+  "id": "650bb03a2324339f4af3c224",
+  "name": "Jane Smith",
+  "email": "jane@email.com",
+  "phone": "555-123-4567",
+  "address": {
+    "street": "456 Elm Street",
+    "city": "Springfield",
+    "state": "IL",
+    "zipcode": "62701"
+  },
+  "experience": [
+    {
+      "_id": "650bbfdbbb69a69afced80cc",
+      "position": "Marketing Coordinator",
+      "company": "MarketingPro",
+      "location": "New York, NY",
+      "start_date": "June 2019",
+      "end_date": "Present",
+      "responsibilities": [
+        "Assisting in marketing campaigns",
+        "Data analysis",
+        "Social media management"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "_id": "650bbfdbbb69a69afced80cd",
+      "degree": "Bachelor of Arts in Communication",
+      "school": "University of Communication",
+      "location": "Chicago, IL",
+      "graduation_date": "May 2018"
+    }
+  ]
+}
 
-### DELETE contact 
-DELETE http://localhost:8080/users/650268b66bc0e6a9275042e0 HTTP/1.1
+### DELETE user 
+DELETE http://localhost:8080/users/650bb03a2324339f4af3c223 HTTP/1.1
 
 // PRODUCTION Deploy 
 ### 
@@ -41,7 +78,7 @@ content-type: application/json
   "favoriteColor": "Green",
   "birthday": "07-28-1995"
  }
-### PUT contact 
+### PUT user 
 PUT https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
 content-type: application/json
 
@@ -49,5 +86,5 @@ content-type: application/json
 "firstName":"Valerie", "lastName":"Lockling", "email":"valeri.lockling@gmail.com", "favoriteColor":"Blue", "birthday":"11-10-1997"
 } 
 
-### DELETE contact 
+### DELETE user 
 DELETE https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1

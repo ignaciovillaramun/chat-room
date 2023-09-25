@@ -1,0 +1,46 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@email.com",
+    "phone": "123-456-7890",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipcode": "12345"
+    }
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane@email.com",
+    "phone": "555-123-4567",
+    "address": {
+      "street": "456 Elm Street",
+      "city": "Springfield",
+      "state": "IL",
+      "zipcode": "62701"
+    }
+  },
+  {
+    "name": "David Johnson",
+    "email": "david@example.com",
+    "phone": "555-987-6543",
+    "address": {
+      "street": "789 Oak Avenue",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zipcode": "90001"
+    }
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emily@example.com",
+    "phone": "555-555-5555",
+    "address": {
+      "street": "123 Pine Road",
+      "city": "Miami",
+      "state": "FL",
+      "zipcode": "33101"
+    }
+  }
+]

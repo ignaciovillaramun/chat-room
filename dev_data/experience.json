@@ -1,0 +1,54 @@
+[
+  {
+    "position": "Software Engineer",
+    "company": "TechCorp",
+    "location": "Silicon Valley, CA",
+    "start_date": "January 2018",
+    "end_date": "Present",
+    "responsibilities": [
+      "Developing and maintaining web applications",
+      "Collaborating with cross-functional teams",
+      "Debugging and optimizing code"
+    ],
+    "user": "650bbea82324339f4af3c227"
+  },
+  {
+    "position": "Marketing Coordinator",
+    "company": "MarketingPro",
+    "location": "New York, NY",
+    "start_date": "June 2019",
+    "end_date": "Present",
+    "responsibilities": [
+      "Assisting in marketing campaigns",
+      "Data analysis",
+      "Social media management"
+    ],
+    "user": "650bb03a2324339f4af3c224"
+  },
+  {
+    "position": "Front-end Developer",
+    "company": "WebTech Solutions",
+    "location": "San Francisco, CA",
+    "start_date": "February 2020",
+    "end_date": "Present",
+    "responsibilities": [
+      "Developing user interfaces",
+      "Collaborating with designers",
+      "Front-end optimization"
+    ],
+    "user": "650bb03a2324339f4af3c225"
+  },
+  {
+    "position": "Product Manager",
+    "company": "Product Innovations",
+    "location": "Seattle, WA",
+    "start_date": "March 2017",
+    "end_date": "Present",
+    "responsibilities": [
+      "Product strategy development",
+      "Team leadership",
+      "Market research"
+    ],
+    "user": "650bb03a2324339f4af3c226"
+  }
+]

@@ -19,7 +19,7 @@
         }
       }
     },
-    "/contacts/": {
+    "/users/": {
       "get": {
         "description": "",
         "responses": {
@@ -29,30 +29,19 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["user"],
+        "summary": "Create user",
+        "description": "This is for when a user creates an account",
+        "operationId": "createUser",
+        "produces": ["application/json"],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Credentials"
             }
           }
         ],
@@ -63,9 +52,13 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/users/{id}": {
       "get": {
+        "tags": ["user"],
+        "summary": "Get user by ID",
         "description": "",
+        "operationId": "getUser",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -81,37 +74,17 @@
         }
       },
       "put": {
+        "tags": ["user"],
+        "summary": "Updated user",
         "description": "",
+        "operationId": "updateUser",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {

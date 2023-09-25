@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const users = require('./routes/usersRoutes');
+const educations = require('./routes/educationsRoutes');
+const experiences = require('./routes/experiencesRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const AppError = require('./utils/appError');
@@ -18,6 +20,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Routes
 app.use('/users', users);
+app.use('/educations', educations);
+app.use('/experiences', experiences);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
