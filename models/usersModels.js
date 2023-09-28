@@ -32,16 +32,20 @@ const userSchema = new mongoose.Schema(
         required: [true, 'Please provide your zipcode'],
       },
     },
-    experience: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Experience',
-      required: [true, 'Experience must belong to a user'],
-    },
-    education: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Education',
-      required: [true, 'Education must belong to a user'],
-    },
+    experience: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Experience',
+        required: [true, 'Experience must belong to a user'],
+      },
+    ],
+    education: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Education',
+        required: [true, 'Education must belong to a user'],
+      },
+    ],
   },
   {
     versionKey: false,

@@ -9,18 +9,10 @@
   "basePath": "/",
   "schemes": ["http"],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/users/": {
       "get": {
+        "tags": ["User"],
+        "summary": "Get all users",
         "description": "",
         "responses": {
           "200": {
@@ -29,7 +21,7 @@
         }
       },
       "post": {
-        "tags": ["user"],
+        "tags": ["User"],
         "summary": "Create user",
         "description": "This is for when a user creates an account",
         "operationId": "createUser",
@@ -54,7 +46,7 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["user"],
+        "tags": ["User"],
         "summary": "Get user by ID",
         "description": "",
         "operationId": "getUser",
@@ -74,8 +66,8 @@
         }
       },
       "put": {
-        "tags": ["user"],
-        "summary": "Updated user",
+        "tags": ["User"],
+        "summary": "Update user",
         "description": "",
         "operationId": "updateUser",
         "produces": ["application/json"],
@@ -94,6 +86,8 @@
         }
       },
       "delete": {
+        "tags": ["User"],
+        "summary": "Delete user",
         "description": "",
         "parameters": [
           {
@@ -103,6 +97,30 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/educations/": {
+      "get": {
+        "tags": ["Education"],
+        "summary": "Get all educations",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/experiences/": {
+      "get": {
+        "tags": ["Experience"],
+        "summary": "Get all experiences",
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
