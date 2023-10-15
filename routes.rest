@@ -19,11 +19,10 @@ content-type: application/json
     }
  }
 ### PUT user 
-PUT http://localhost:8080/users/650bb03a2324339f4af3c224 HTTP/1.1
+PUT http://localhost:8080/users/652ae2845e56c0abc4102aa0 HTTP/1.1
 content-type: application/json
 
 {
-  "id": "650bb03a2324339f4af3c224",
   "name": "Jane Smith",
   "email": "jane@email.com",
   "phone": "555-123-4567",
@@ -33,53 +32,37 @@ content-type: application/json
     "state": "IL",
     "zipcode": "62701"
   },
-  "experience": [
-    {
-      "_id": "650bbfdbbb69a69afced80cc",
-      "position": "Marketing Coordinator",
-      "company": "MarketingPro",
-      "location": "New York, NY",
-      "start_date": "June 2019",
-      "end_date": "Present",
-      "responsibilities": [
-        "Assisting in marketing campaigns",
-        "Data analysis",
-        "Social media management"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "_id": "650bbfdbbb69a69afced80cd",
-      "degree": "Bachelor of Arts in Communication",
-      "school": "University of Communication",
-      "location": "Chicago, IL",
-      "graduation_date": "May 2018"
-    }
-  ]
+  "experience":["650bbfdbbb69a69afced80cc"],
+  "education": ["650bbfdbbb69a69afced80cd"]  
 }
 
 ### DELETE user 
-DELETE http://localhost:8080/users/650bb03a2324339f4af3c223 HTTP/1.1
+DELETE http://localhost:8080/users/652ae2845e56c0abc4102aa0 HTTP/1.1
 
 // PRODUCTION Deploy 
 ### 
-GET https://cse341-villar.onrender.com/users 
+GET https://independent.onrender.com/users 
 ### 
-GET https://cse341-villar.onrender.com/users/6500bea0b0eff6ceace67b43 
+GET https://independent.onrender.com/users/6511bc142324339f4af3c245 
 ###
-POST https://cse341-villar.onrender.com/users HTTP/1.1
+POST https://independent.onrender.com/users HTTP/1.1
 content-type: application/json
 
- {
-  "firstName": "Ignacio",
-  "lastName": "Villar",
-  "email": "Ignacio.villar@gmail.com",
-  "favoriteColor": "Green",
-  "birthday": "07-28-1995"
- }
+{
+  "name": "Jane Smith",
+  "email": "jane@email.com",
+  "phone": "555-123-4567",
+  "address": {
+    "street": "456 Elm Street",
+    "city": "Springfield",
+    "state": "IL",
+    "zipcode": "62701"
+  },
+  "experience":["650bbfdbbb69a69afced80cc"],
+  "education": ["650bbfdbbb69a69afced80cd"]  
+}
 ### PUT user 
-PUT https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
+PUT https://independent.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
 content-type: application/json
 
 {
@@ -87,4 +70,4 @@ content-type: application/json
 } 
 
 ### DELETE user 
-DELETE https://cse341-villar.onrender.com/users/65026abcca4b1c47c1163329 HTTP/1.1
+DELETE https://independent.onrender.com/users/652aeddc2835044cf5d4d3f5 HTTP/1.1
