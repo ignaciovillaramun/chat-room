@@ -58,9 +58,7 @@
       <div class="post-card">
         <h3><%= user.displayName %></h3>
         <p><%= post.message %></p>
-        <p><%= post.googleUser %></p>
-        <p><%= post._id %></p>
-        <p><%= user._id %></p>
+       
 
         <!-- Reply button and input -->
         <button class="reply-btn" onclick="toggleReplyInput('<%= post._id %>')">
@@ -72,7 +70,9 @@
             id="reply-text-<%= post._id %>"
             placeholder="Type your reply"
           />
-          <button onclick="submitReply('<%= post._id %>')">Submit Reply</button>
+          <button onclick="submitReply('<%= post._id %>', '<%= user._id %>')">Submit Reply</button>
+          Submit Reply
+          </button>
         </div>
 
         <!-- Display reply count -->
@@ -93,13 +93,11 @@
           replyInput.style.display === 'none' ? 'block' : 'none';
       }
 
-      async function submitReply(postId) {
+      async function submitReply(postId, userId) {
         try {
           const replyText = document.getElementById(
             `reply-text-${postId}`
           ).value;
-          console.log(postId);
-          console.log('hell', replyText);
 
           // Make the POST request to create a new reply
           const response = await fetch('http://localhost:8080/replies/create', {
@@ -109,7 +107,7 @@
             },
             body: JSON.stringify({
               message: replyText,
-              googleUser: user._id,
+              googleUser: userId,
               postId,
             }),
           });
@@ -126,12 +124,6 @@
 
           // Assuming the server responds with the created reply object
           console.log('Reply created:', data);
-
-          // Update the reply count on the page
-          const replyCountSpan = document.getElementById(
-            `reply-count-${postId}`
-          );
-          replyCountSpan.textContent = parseInt(replyCountSpan.textContent) + 1;
         } catch (error) {
           console.error('Error creating reply:', error.message);
         }
