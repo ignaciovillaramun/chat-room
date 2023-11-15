@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/usersController');
+const userController = require('../controllers/googleUsersController');
 
-router.route('/').get(userController.getAll).post(userController.createUser);
+router.get('/', (req, res) => {
+  return res.json({
+    data: 'hello from users',
+  });
+});
+
+router.route('/all').get(userController.getAll);
 
 router
   .route('/:id')

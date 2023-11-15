@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const users = require('./routes/usersRoutes');
-const educations = require('./routes/educationsRoutes');
-const experiences = require('./routes/experiencesRoutes');
+const replies = require('./routes/repliesRoutes');
+const likes = require('./routes/likesRoutes');
+const posts = require('./routes/postsRoutes');
 const login = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const swaggerUi = require('swagger-ui-express');
@@ -18,7 +19,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '10kb' }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -45,8 +51,9 @@ app.set('view engine', 'ejs');
 app.use('/auth', login);
 app.use('/profile', profileRoutes);
 app.use('/users', users);
-app.use('/educations', educations);
-app.use('/experiences', experiences);
+app.use('/posts', posts);
+app.use('/replies', replies);
+app.use('/likes', likes);
 
 // Create home route
 app.get('/', (req, res) => {

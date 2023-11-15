@@ -52,17 +52,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'experience',
-    select: 'position company location start_date end_date responsibilities',
-  }).populate({
-    path: 'education',
-    select: 'degree school location graduation_date',
-  });
-  next();
-});
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

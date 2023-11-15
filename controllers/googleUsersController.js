@@ -1,54 +1,51 @@
-var User = require('../models/usersModels');
+var User = require('../models/googleUser');
+const passport = require('passport');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-const fieldOrder = [
-  'id',
-  'name',
-  'email',
-  'phone',
-  'address',
-  'experience',
-  'education',
-];
-
-const formatDocument = (doc, fieldOrder) => {
-  const formattedDoc = {};
-
-  fieldOrder.forEach((field) => {
-    formattedDoc[field] = doc[field];
-  });
-
-  return formattedDoc;
+exports.login = async (req, res, next) => {
+  res.render('login', { user: req.user });
 };
+
+exports.logout = async (req, res, next) => {
+  // handle with passport
+  req.logout((err) => {
+    if (err) {
+      // Handle error, e.g., by sending an error response
+      res.status(500).send('Error logging out');
+    } else {
+      // Successful logout, redirect the user
+      res.redirect('/');
+    }
+  });
+};
+
+exports.googleRouteHandler = passport.authenticate('google', {
+  scope: ['profile'],
+});
+
+exports.googleRedirectHandler = passport.authenticate('google', {
+  failureRedirect: '/login',
+});
+
+exports.handleSuccessfulGoogleRedirect = (req, res) => {
+  res.redirect('/profile/');
+};
+
+//----------------//
 
 exports.getAll = async (req, res, next) => {
   const data = await User.find();
-  const formattedData = data.map((doc) => formatDocument(doc, fieldOrder));
-
-  res.status(200).json(formattedData);
+  res.status(200).json(data);
 };
 
 exports.getOne = catchAsync(async (req, res, next) => {
   const doc = await User.findById(req.params.id);
-  const formattedDoc = formatDocument(doc, fieldOrder);
-
   if (!doc) {
     return next(new AppError('No doc found with that ID', 404));
   }
 
-  res.status(200).json(formattedDoc);
-});
-
-exports.createUser = catchAsync(async (req, res, next) => {
-  const doc = await User.create(req.body);
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      data: doc,
-    },
-  });
+  res.status(200).json(doc);
 });
 
 exports.updateUser = catchAsync(async (req, res, next) => {
@@ -57,7 +54,6 @@ exports.updateUser = catchAsync(async (req, res, next) => {
     new: true,
     runValidators: true,
   });
-  console.log(doc);
 
   if (!doc) {
     return next(new AppError('No document found with that ID', 404));
