@@ -8,6 +8,11 @@ exports.getAll = async (req, res, next) => {
   res.render('allPosts', { posts, user });
 
   // res.status(200).json(data);
+  /*
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+  */
 };
 
 exports.getOne = catchAsync(async (req, res, next) => {
@@ -18,6 +23,12 @@ exports.getOne = catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(doc);
+
+  /*
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+  */
 });
 
 exports.updatePost = catchAsync(async (req, res, next) => {
@@ -37,6 +48,22 @@ exports.updatePost = catchAsync(async (req, res, next) => {
       data: doc,
     },
   });
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        'required': true,
+        schema: {
+          $message: "This is an edited test post.",
+        }
+    }
+
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+
+    #swagger.responses[204] = {}
+    #swagger.responses[404] = {}
+    #swagger.responses[500] = {}
+    */
 });
 
 exports.createPost = catchAsync(async (req, res, next) => {
@@ -48,6 +75,22 @@ exports.createPost = catchAsync(async (req, res, next) => {
       data: doc,
     },
   });
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        'required': true,
+        schema: {
+          $googleUser: "",
+          $message: "This is a test post.",
+        }
+    }
+
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+
+    #swagger.responses[201] = {}
+    #swagger.responses[500] = {}
+    */
 });
 
 exports.deletePost = catchAsync(async (req, res, next) => {
@@ -61,4 +104,13 @@ exports.deletePost = catchAsync(async (req, res, next) => {
     status: 'success',
     data: null,
   });
+    /*
+  #swagger.security = [{
+    "oauth2":[]
+    }]
+
+  #swagger.responses[200] = {}
+  #swagger.responses[404] = {}
+  #swagger.responses[500] = {}
+  */
 });

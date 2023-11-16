@@ -6,6 +6,12 @@ const catchAsync = require('../utils/catchAsync');
 exports.getAll = async (req, res, next) => {
   const data = await Reply.find();
   res.status(200).json(data);
+
+  /*
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+  */
 };
 
 exports.getOne = catchAsync(async (req, res, next) => {
@@ -16,6 +22,12 @@ exports.getOne = catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(doc);
+
+  /*
+    #swagger.security = [{
+    "oauth2":[]
+    }]
+  */
 });
 
 exports.updateReply = catchAsync(async (req, res, next) => {
@@ -35,6 +47,22 @@ exports.updateReply = catchAsync(async (req, res, next) => {
       data: doc,
     },
   });
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        'required': true,
+        schema: {
+          $message: "This is an edited test reply.",
+        }
+    }
+
+    #swagger.security = [{
+        "oauth2":[]
+    }]
+
+    #swagger.responses[204] = {}
+    #swagger.responses[404] = {}
+    #swagger.responses[500] = {}
+       */
 });
 
 exports.createReply = catchAsync(async (req, res, next) => {
@@ -52,6 +80,23 @@ exports.createReply = catchAsync(async (req, res, next) => {
     status: 'success',
     data: doc,
   });
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        'required': true,
+        schema: {
+          $googleUser: "",
+          $postId: "Id of the post being responded to",
+          $message: "This is a test reply.",
+        }
+    }
+
+    #swagger.security = [{
+        "oauth2":[]
+    }]
+
+    #swagger.responses[201] = {}
+    #swagger.responses[500] = {}
+       */
 });
 
 exports.deleteReply = catchAsync(async (req, res, next) => {
@@ -65,4 +110,13 @@ exports.deleteReply = catchAsync(async (req, res, next) => {
     status: 'success',
     data: null,
   });
+  /*
+  #swagger.security = [{
+        "oauth2":[]
+    }]
+
+  #swagger.responses[200] = {}
+  #swagger.responses[404] = {}
+  #swagger.responses[500] = {}
+  */
 });
