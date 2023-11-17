@@ -58,7 +58,24 @@
       <div class="post-card">
         <h3><%= user.displayName %></h3>
         <p><%= post.message %></p>
-       
+
+        <!-- Display replies 
+          <div id="replies-container-<%= post._id %>">
+            <% replies.filter(reply => reply.postId === post._id).forEach(reply => { %>
+              <div class="reply-card">
+                <p><%= reply.message %></p>
+              </div>
+            <% }); %>
+          </div>
+  
+          Display reply count 
+          <p>
+            Replies:
+            <span id="reply-count-<%= post._id %>">
+              <% let postReplies = replies.filter(reply => reply.postId === post._id); %>
+              <%= postReplies.length %>
+            </span>
+          </p>-->
 
         <!-- Reply button and input -->
         <button class="reply-btn" onclick="toggleReplyInput('<%= post._id %>')">
@@ -70,18 +87,10 @@
             id="reply-text-<%= post._id %>"
             placeholder="Type your reply"
           />
-          <button onclick="submitReply('<%= post._id %>', '<%= user._id %>')">Submit Reply</button>
-          Submit Reply
+          <button onclick="submitReply('<%= post._id %>', '<%= user._id %>')">
+            Submit Reply
           </button>
         </div>
-
-        <!-- Display reply count -->
-        <p>
-          Replies:
-          <span id="reply-count-<%= post._id %>">
-            <%= post.replies ? post.replies.length : 0 %>
-          </span>
-        </p>
       </div>
       <% }); %>
     </main>
@@ -112,9 +121,6 @@
             }),
           });
 
-          console.log(response.status);
-          console.log(response.statusText);
-
           if (!response.ok) {
             throw new Error(`Failed to create reply: ${response.status}`);
           }
@@ -128,6 +134,43 @@
           console.error('Error creating reply:', error.message);
         }
       }
+
+      async function getAllReplies() {
+        try {
+          const response = await fetch('http://localhost:8080/replies/all', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch replies: ${response.status}`);
+          }
+
+          const replies = await response.json();
+
+          console.log(replies);
+          //  // Assuming data is an array of replies
+          //   <% posts.forEach(post => { %>
+          //     const repliesContainer = document.getElementById(`replies-container-${post._id}`);
+          //     repliesContainer.innerHTML = ''; // Clear previous replies
+
+          //     replies.filter(reply => reply.postId === post._id).forEach(reply => {
+          //       const replyElement = document.createElement('div');
+          //       replyElement.classList.add('reply-card');
+          //       replyElement.innerHTML = `<p>${reply.message}</p>`;
+          //       repliesContainer.appendChild(replyElement);
+          //     });
+
+          //     const replyCount = document.getElementById(`reply-count-${post._id}`);
+          //     replyCount.innerText = replies.filter(reply => reply.postId === post._id).length;
+          //   <% }); %>
+        } catch (error) {
+          console.error('Error fetching replies:', error.message);
+        }
+      }
+      window.onload = getAllReplies;
     </script>
   </body>
 </html>

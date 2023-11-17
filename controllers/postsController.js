@@ -5,7 +5,8 @@ const catchAsync = require('../utils/catchAsync');
 exports.getAll = async (req, res, next) => {
   const posts = await Post.find();
   const user = req.user;
-  res.render('allPosts', { posts, user });
+  // res.render('allPosts', { posts, user });
+  res.status(200).json(posts);
 
   // res.status(200).json(data);
   /*
@@ -104,7 +105,7 @@ exports.deletePost = catchAsync(async (req, res, next) => {
     status: 'success',
     data: null,
   });
-    /*
+  /*
   #swagger.security = [{
     "oauth2":[]
     }]

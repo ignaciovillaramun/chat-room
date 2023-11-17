@@ -7,9 +7,7 @@
   },
   "host": "localhost:8080",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
@@ -30,6 +28,7 @@
     },
     "/users/": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "responses": {
           "200": {
@@ -40,6 +39,7 @@
     },
     "/users/all": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "responses": {
           "200": {
@@ -50,6 +50,7 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -66,6 +67,7 @@
         }
       },
       "put": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -82,6 +84,7 @@
         }
       },
       "delete": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -100,6 +103,7 @@
     },
     "/replies/": {
       "get": {
+        "tags": ["Reply"],
         "description": "",
         "responses": {
           "200": {
@@ -110,6 +114,7 @@
     },
     "/replies/all": {
       "get": {
+        "tags": ["Reply"],
         "description": "",
         "responses": {
           "200": {
@@ -125,6 +130,7 @@
     },
     "/replies/create": {
       "post": {
+        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -147,11 +153,7 @@
                   "example": "This is a test reply."
                 }
               },
-              "required": [
-                "googleUser",
-                "postId",
-                "message"
-              ]
+              "required": ["googleUser", "postId", "message"]
             }
           }
         ],
@@ -172,6 +174,7 @@
     },
     "/replies/{id}": {
       "get": {
+        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -193,6 +196,7 @@
         ]
       },
       "put": {
+        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -213,9 +217,7 @@
                   "example": "This is an edited test reply."
                 }
               },
-              "required": [
-                "message"
-              ]
+              "required": ["message"]
             }
           }
         ],
@@ -237,6 +239,7 @@
         ]
       },
       "delete": {
+        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -266,6 +269,7 @@
     },
     "/posts/": {
       "get": {
+        "tags": ["Post"],
         "description": "",
         "responses": {
           "200": {
@@ -276,6 +280,7 @@
     },
     "/posts/all": {
       "get": {
+        "tags": ["Post"],
         "description": "",
         "responses": {
           "default": {
@@ -291,6 +296,7 @@
     },
     "/posts/create": {
       "post": {
+        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -309,10 +315,7 @@
                   "example": "This is a test post."
                 }
               },
-              "required": [
-                "googleUser",
-                "message"
-              ]
+              "required": ["googleUser", "message"]
             }
           }
         ],
@@ -333,6 +336,7 @@
     },
     "/posts/{id}": {
       "get": {
+        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -354,6 +358,7 @@
         ]
       },
       "put": {
+        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -374,9 +379,7 @@
                   "example": "This is an edited test post."
                 }
               },
-              "required": [
-                "message"
-              ]
+              "required": ["message"]
             }
           }
         ],
@@ -398,6 +401,7 @@
         ]
       },
       "delete": {
+        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
