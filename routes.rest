@@ -1,8 +1,11 @@
 // LOCALHOST 
-### 
+
 GET http://localhost:8080/users 
 ### 
 GET http://localhost:8080/users/6511bc142324339f4af3c245
+
+
+
 ### Create user 
 POST http://localhost:8080/users HTTP/1.1 
 content-type: application/json
@@ -71,3 +74,32 @@ content-type: application/json
 
 ### DELETE user 
 DELETE https://independent.onrender.com/users/652aeddc2835044cf5d4d3f5 HTTP/1.1
+
+
+
+
+GET http://localhost:8080/likes
+
+###
+GET http://localhost:8080/likes/6511bc142324339f4af3c245
+
+###
+POST http://localhost:8080/likes HTTP/1.1 
+content-type: application/json
+{
+  "emoji": "like",
+  "post": "4332423423fdsf23423",
+  "googleUser": "dsf3243242423545235"
+}
+###
+PUT http://localhost:8080/likes/652ae2845e56c0abc4102aa0 HTTP/1.1
+content-type: application/json
+{
+  "emoji": "like",
+  "post": "4332423423fdsf23423",
+  "googleUser": "dsf3243242423545235"
+}
+### 
+DELETE http://localhost:8080/likes/652ae2845e56c0abc4102aa0 HTTP/1.1
+
+####
