@@ -7,7 +7,7 @@ const likeSchema = new mongoose.Schema({
     ref: 'GoogleUser',
     required: [true, 'Like must belong to a user'],
   },
-  post: {
+  postId: {
     type: mongoose.Types.ObjectId,
     ref: 'Post',
     required: [true, 'Like must belong to a post'],

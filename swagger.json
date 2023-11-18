@@ -75,13 +75,50 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "displayName": {
+                  "type": "string",
+                  "example": "This is an edited test displayName."
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "This is an edited test first name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "This is an edited test last name"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "This is an edited test image"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
       },
       "delete": {
         "tags": ["User"],
@@ -97,6 +134,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -429,186 +472,171 @@
         ]
       }
     },
-     "/likes/": {
-  "get": {
-    "tags": ["Like"],
-    "description": "",
-    "responses": {
-      "200": {
-        "description": "OK"
+    "/likes/": {
+      "get": {
+        "tags": ["Like"],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/likes/all": {
+      "get": {
+        "tags": ["Like"],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      }
+    },
+    "/likes/create": {
+      "post": {
+        "tags": ["Like"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "emoji": {
+                  "type": "string",
+                  "example": "Type an emotion"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "googleUser": {
+                  "type": "string",
+                  "example": ""
+                }
+              },
+              "required": ["emoji", "post", "googleUser"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      }
+    },
+
+    "/likes/{id}": {
+      "get": {
+        "tags": ["Like"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["Like"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "emoji": {
+                  "type": "string",
+                  "example": "This is an edited test emoji"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Like"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
       }
     }
   }
-},
-"/likes/all": {
-  "get": {
-    "tags": ["Like"],
-    "description": "",
-    "responses": {
-      "200": {
-        "description": "OK"
-      }
-    },
-    "security": [
-      {
-        "oauth2": []
-      }
-    ]
-  }
-},
-"/likes/create": {
-  "post": {
-    "tags": ["Like"],
-    "description": "",
-    "parameters": [
-      {
-        "name": "body",
-        "in": "body",
-        "required": true,
-        "schema": {
-          "type": "object",
-          "properties": {
-            "emoji": {
-              "type": "string",
-              "example": "like"
-            },
-            "post": {
-              "type": "string",
-              "example": "4332423423fdsf23423"
-            },
-            "googleUser": {
-              "type": "string",
-              "example": "dsf3243242423545235"
-            }
-          },
-          "required": ["emoji", "post", "googleUser"]
-        }
-      }
-    ],
-    "responses": {
-      "201": {
-        "description": "Created"
-      },
-      "500": {
-        "description": "Internal Server Error"
-      }
-    },
-    "security": [
-      {
-        "oauth2": []
-      }
-    ]
-  }
-},
-
-"/likes/{id}": {
-  "get": {
-    "tags": ["Like"],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "in": "path",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "responses": {
-      "200": {
-        "description": "OK"
-      }
-    },
-    "security": [
-      {
-        "oauth2": []
-      }
-    ]
-  },
-  "put": {
-    "tags": ["Like"],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "in": "path",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "body",
-        "in": "body",
-        "required": true,
-        "schema": {
-          "type": "object",
-          "properties": {
-            "emoji": {
-              "type": "string",
-              "example": "like"
-            },
-            "post": {
-              "type": "string",
-              "example": "4332423423fdsf23423"
-            },
-            "googleUser": {
-              "type": "string",
-              "example": "dsf3243242423545235"
-            }
-          },
-          "required": ["emoji", "post", "googleUser"]
-        }
-      }
-    ],
-    "responses": {
-      "204": {
-        "description": "No Content"
-      },
-      "404": {
-        "description": "Not Found"
-      },
-      "500": {
-        "description": "Internal Server Error"
-      }
-    },
-    "security": [
-      {
-        "oauth2": []
-      }
-    ]
-  },
-  "delete": {
-    "tags": ["Like"],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "in": "path",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "responses": {
-      "200": {
-        "description": "OK"
-      },
-      "404": {
-        "description": "Not Found"
-      },
-      "500": {
-        "description": "Internal Server Error"
-      }
-    },
-    "security": [
-      {
-        "oauth2": []
-      }
-    ]
-  }
-}
-  }
-  
-  
-  
-  
-
-  
 }
