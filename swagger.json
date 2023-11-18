@@ -5,13 +5,13 @@
     "description": "Chatroom API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "chat-room-f53d.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
-      "authorizationUrl": "http://localhost:8080/auth/login",
+      "authorizationUrl": "https://chat-room-f53d.onrender.com/auth/login",
       "flow": "accessCode"
     }
   },
