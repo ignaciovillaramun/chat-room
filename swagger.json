@@ -5,9 +5,11 @@
     "description": "Chatroom API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "chat-room-f53d.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "https"
+  ],
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
@@ -28,7 +30,6 @@
     },
     "/users/": {
       "get": {
-        "tags": ["User"],
         "description": "",
         "responses": {
           "200": {
@@ -39,7 +40,6 @@
     },
     "/users/all": {
       "get": {
-        "tags": ["User"],
         "description": "",
         "responses": {
           "200": {
@@ -50,7 +50,6 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -67,7 +66,6 @@
         }
       },
       "put": {
-        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -75,53 +73,15 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "displayName": {
-                  "type": "string",
-                  "example": "This is an edited test displayName."
-                },
-                "firstName": {
-                  "type": "string",
-                  "example": "This is an edited test first name"
-                },
-                "lastName": {
-                  "type": "string",
-                  "example": "This is an edited test last name"
-                },
-                "image": {
-                  "type": "string",
-                  "example": "This is an edited test image"
-                }
-              }
-            }
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
+        }
       },
       "delete": {
-        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -134,19 +94,12 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
     "/replies/": {
       "get": {
-        "tags": ["Reply"],
         "description": "",
         "responses": {
           "200": {
@@ -157,7 +110,6 @@
     },
     "/replies/all": {
       "get": {
-        "tags": ["Reply"],
         "description": "",
         "responses": {
           "200": {
@@ -173,7 +125,6 @@
     },
     "/replies/create": {
       "post": {
-        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -196,7 +147,11 @@
                   "example": "This is a test reply."
                 }
               },
-              "required": ["googleUser", "postId", "message"]
+              "required": [
+                "googleUser",
+                "postId",
+                "message"
+              ]
             }
           }
         ],
@@ -217,7 +172,6 @@
     },
     "/replies/{id}": {
       "get": {
-        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -239,7 +193,6 @@
         ]
       },
       "put": {
-        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -260,7 +213,9 @@
                   "example": "This is an edited test reply."
                 }
               },
-              "required": ["message"]
+              "required": [
+                "message"
+              ]
             }
           }
         ],
@@ -282,7 +237,6 @@
         ]
       },
       "delete": {
-        "tags": ["Reply"],
         "description": "",
         "parameters": [
           {
@@ -312,7 +266,6 @@
     },
     "/posts/": {
       "get": {
-        "tags": ["Post"],
         "description": "",
         "responses": {
           "200": {
@@ -323,11 +276,10 @@
     },
     "/posts/all": {
       "get": {
-        "tags": ["Post"],
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         },
         "security": [
@@ -339,7 +291,6 @@
     },
     "/posts/create": {
       "post": {
-        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -358,7 +309,10 @@
                   "example": "This is a test post."
                 }
               },
-              "required": ["googleUser", "message"]
+              "required": [
+                "googleUser",
+                "message"
+              ]
             }
           }
         ],
@@ -379,7 +333,6 @@
     },
     "/posts/{id}": {
       "get": {
-        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -401,7 +354,6 @@
         ]
       },
       "put": {
-        "tags": ["Post"],
         "description": "",
         "parameters": [
           {
@@ -422,7 +374,9 @@
                   "example": "This is an edited test post."
                 }
               },
-              "required": ["message"]
+              "required": [
+                "message"
+              ]
             }
           }
         ],
@@ -444,173 +398,6 @@
         ]
       },
       "delete": {
-        "tags": ["Post"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      }
-    },
-    "/likes/": {
-      "get": {
-        "tags": ["Like"],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/likes/all": {
-      "get": {
-        "tags": ["Like"],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      }
-    },
-    "/likes/create": {
-      "post": {
-        "tags": ["Like"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "emoji": {
-                  "type": "string",
-                  "example": "Type an emotion"
-                },
-                "postId": {
-                  "type": "string",
-                  "example": ""
-                },
-                "googleUser": {
-                  "type": "string",
-                  "example": ""
-                }
-              },
-              "required": ["emoji", "post", "googleUser"]
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      }
-    },
-
-    "/likes/{id}": {
-      "get": {
-        "tags": ["Like"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      },
-      "put": {
-        "tags": ["Like"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "emoji": {
-                  "type": "string",
-                  "example": "This is an edited test emoji"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": ["Like"],
         "description": "",
         "parameters": [
           {

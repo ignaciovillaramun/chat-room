@@ -5,8 +5,8 @@ const doc = {
     title: 'Chatroom API',
     description: 'Chatroom API',
   },
-  host: "localhost:8080",
-  schemes: ["http"],
+  host: "chat-room-f53d.onrender.com",
+  schemes: ["https"],
 
   securityDefinitions: {
     oauth2: {
