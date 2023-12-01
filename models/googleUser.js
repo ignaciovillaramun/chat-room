@@ -24,6 +24,14 @@ const googleUserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  theme: {
+    type: String,
+    default: 'light'
+  },
+  userType: {
+    type: String,
+    default: 'user'
+  },
 });
 
 const GoogleUser = mongoose.model('GoogleUser', googleUserSchema);
