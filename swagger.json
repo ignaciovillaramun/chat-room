@@ -98,6 +98,14 @@
                 "image": {
                   "type": "string",
                   "example": "This is an edited test image"
+                },
+                "theme": {
+                  "type": "string",
+                  "example": "dark"
+                },
+                "userType": {
+                  "type": "string",
+                  "example": "user"
                 }
               }
             }
