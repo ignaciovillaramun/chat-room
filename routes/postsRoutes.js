@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const postsController = require('../controllers/postsController');
+const { ensureAuthenticated } = require('../controllers/authController');
+
+router.use(ensureAuthenticated);
 
 router.get('/', (req, res) => {
   return res.json({
