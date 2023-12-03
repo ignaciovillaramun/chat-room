@@ -3,13 +3,19 @@ const mongoose = require('mongoose');
 const GoogleUser = require('../models/googleUser');
 
 module.exports = function (passport) {
+  const callbackURL =
+    process.env.NODE_ENV === 'production'
+      ? 'https://chat-room-f53d.onrender.com/auth/google/redirect'
+      : 'http://localhost:8080/auth/google/redirect';
+  console.log(callbackURL);
+
   passport.use(
     new GoogleStrategy(
       {
         // options for google strategy
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: 'https://chat-room-f53d.onrender.com/auth/google/redirect',
+        callbackURL,
       },
       async (accessToken, refreshToken, profile, done) => {
         // passport callback function

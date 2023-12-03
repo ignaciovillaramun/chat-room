@@ -3,13 +3,12 @@ const router = express.Router();
 const postsController = require('../controllers/postsController');
 const { ensureAuthenticated } = require('../controllers/authController');
 
-router.use(ensureAuthenticated);
-
 router.get('/', (req, res) => {
   return res.json({
     data: 'hello from posts',
   });
 });
+router.use(ensureAuthenticated);
 
 router.route('/all').get(postsController.getAll);
 router.route('/create').post(postsController.createPost);
