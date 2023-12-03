@@ -9,7 +9,7 @@ module.exports = function (passport) {
         // options for google strategy
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: '/auth/google/redirect',
+        callbackURL: 'https://chat-room-f53d.onrender.com/auth/google/redirect',
       },
       async (accessToken, refreshToken, profile, done) => {
         // passport callback function
