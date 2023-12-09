@@ -4,7 +4,7 @@ const routes = require('../routes');
 const app = new express();
 app.use('/', routes);
 
-const baseurl = 'https://chat-room-f53d.onrender.com';
+const baseurl = 'http://localhost:8080';
 
 describe('like tests', () => {
   let mockLike;

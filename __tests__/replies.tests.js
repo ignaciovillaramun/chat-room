@@ -4,7 +4,7 @@ const routes = require('../routes');
 const app = new express();
 app.use('/', routes);
 
-const baseurl = 'https://chat-room-f53d.onrender.com';
+const baseurl = 'http://localhost:8080';
 
 describe('Reply tests', () => {
   let mockReply;
@@ -44,7 +44,9 @@ describe('Reply tests', () => {
   });
 
   it('should delete a reply', async () => {
-    let res = await request(baseurl).delete(`/replies/${testReplyId}`);
+    let res = await request(baseurl)
+      .delete(`/replies/${testReplyId}`)
+      .redirects(5);
     expect(res.statusCode).toBe(200);
   });
 });

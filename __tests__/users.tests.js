@@ -4,11 +4,11 @@ const routes = require('../routes');
 const app = new express();
 app.use('/', routes);
 
-const baseurl = 'https://chat-room-f53d.onrender.com';
+const baseurl = 'http://localhost:8080';
 
 describe('User tests', () => {
   // Create a new user through google to try delete test and replace the testUserId
-  let testUserId = '6552db5060c2830a89c52cdd';
+  let testUserId = '656bcf39670f70d95e0494cd';
 
   it('should get all users', async () => {
     res = await request(baseurl).get('/users/all');
